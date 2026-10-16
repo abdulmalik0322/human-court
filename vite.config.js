@@ -4,6 +4,10 @@ import { defineConfig } from 'vite'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
+  // GitHub Pages serves the site under /human-court/ — the base must match
+  // so asset URLs and client-side routing resolve correctly in production.
+  // Local dev (`npm run dev`) is unaffected (served from /).
+  base: process.env.GHPAGES ? '/human-court/' : '/',
   server: {
     // Bind the LAN interface too — without this Vite only listens on
     // localhost and the site can NEVER open on the phone (even with the
