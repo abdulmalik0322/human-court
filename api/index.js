@@ -53,6 +53,3 @@ export default async function vercelHandler(req, res) {
   }
   return app(req, res);
 }
-
-// TEMPORARY DEBUG: expose real error messages (remove before going fully live)
-const _origHandler = null;

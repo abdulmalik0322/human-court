@@ -37,8 +37,6 @@ export function errorHandler(err, req, res, _next) {
     console.error(`[error] ${req.method} ${req.originalUrl} -> ${status} (${httpErr.code})`);
     if (httpErr.stack) console.error(httpErr.stack.split('\n').slice(0, 3).join('\n'));
   }
-  // TEMP DEBUG: expose real message on serverless (revert after debugging)
-  const debugDetail = process.env.VERCEL ? ` [${httpErr.code}: ${httpErr.message || 'no message'}]`.slice(0, 300) : '';
-  const message = status >= 500 ? 'Something went wrong.' + debugDetail : httpErr.message || 'Something went wrong.';
+  const message = status >= 500 ? 'Something went wrong.' : httpErr.message || 'Something went wrong.';
   res.status(status).json({ error: { code: httpErr.code || 'internal_error', message } });
 }
