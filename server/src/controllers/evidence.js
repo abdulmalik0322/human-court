@@ -145,7 +145,15 @@ export function createEvidenceController(ctx) {
     res.setHeader('Content-Length', ev.size);
     // Serverless binary store: bytes live in the document.
     if (ev.data) {
-      const buf = Buffer.isBuffer(ev.data) ? ev.data : Buffer.from(ev.data);
+      let buf;
+      if (Buffer.isBuffer(ev.data)) {
+        buf = ev.data;
+      } else if (ev.data && ev.data.type === 'Buffer' && Array.isArray(ev.data.data)) {
+        // Mongoose toObject() serializes Buffers as { type: 'Buffer', data: [...] }
+        buf = Buffer.from(ev.data.data);
+      } else {
+        buf = Buffer.from(ev.data);
+      }
       return res.end(buf);
     }
     const filePath = uploadPath(uploadDir, ev.storedName);
