@@ -148,8 +148,11 @@ export function createEvidenceController(ctx) {
       let buf;
       if (Buffer.isBuffer(ev.data)) {
         buf = ev.data;
+      } else if (ev.data && Buffer.isBuffer(ev.data.buffer)) {
+        // Mongoose toObject() returns BSON Binary; the real bytes are in .buffer
+        buf = ev.data.buffer;
       } else if (ev.data && ev.data.type === 'Buffer' && Array.isArray(ev.data.data)) {
-        // Mongoose toObject() serializes Buffers as { type: 'Buffer', data: [...] }
+        // JSON-serialized Buffer format { type: 'Buffer', data: [...] }
         buf = Buffer.from(ev.data.data);
       } else {
         buf = Buffer.from(ev.data);
