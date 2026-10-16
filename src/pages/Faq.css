@@ -1,0 +1,88 @@
+/* FAQ page — mobile-first. Uses only the shared design tokens. */
+
+.faq-hero {
+  background: var(--bg-deep);
+  border-bottom: 1px solid var(--border-soft);
+  padding: var(--space-12) 0;
+}
+
+.faq-hero h1 {
+  margin: 0 0 var(--space-4);
+  color: var(--text);
+}
+
+.faq-lead {
+  color: var(--text-muted);
+  font-size: var(--text-lg);
+  margin: 0;
+}
+
+.faq-body {
+  padding: var(--space-12) 0;
+}
+
+.faq-list {
+  max-width: 44rem;
+}
+
+.faq-item {
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-2);
+  background: var(--surface);
+}
+
+.faq-item h3 {
+  margin: 0;
+}
+
+.faq-trigger {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-4);
+  background: transparent;
+  border: 0;
+  color: var(--text);
+  text-align: left;
+  padding: var(--space-4);
+  font-size: var(--text-base);
+  cursor: pointer;
+}
+
+.faq-chev {
+  color: var(--gold);
+  font-size: var(--text-xl);
+  flex: 0 0 auto;
+}
+
+/* Accordion height animation (grid-template-rows 0fr -> 1fr).
+   Padding lives on the inner wrapper so the collapsed panel has zero height.
+   .accordion-panel base classes are in src/styles/motion.css. */
+.faq-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 240ms ease;
+  padding: 0 var(--space-4);
+  color: var(--text-muted);
+}
+
+.faq-panel.is-open {
+  grid-template-rows: 1fr;
+}
+
+.faq-panel .accordion-panel-inner {
+  overflow: hidden;
+  min-height: 0;
+  padding-bottom: 0;
+  transition: padding-bottom 240ms ease;
+}
+
+.faq-panel.is-open .accordion-panel-inner {
+  padding-bottom: var(--space-4);
+}
+
+.faq-panel p {
+  margin: 0;
+}

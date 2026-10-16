@@ -1,0 +1,89 @@
+/* Shared styles for the four auth pages: Login, Signup, ForgotPassword, ResetPassword.
+   Uses only the project's CSS custom properties (defined in base.css). */
+
+/* Full-viewport wrapper that centers the card. */
+.auth-page {
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-6) var(--space-4);
+  background: var(--bg-deep);
+  box-sizing: border-box;
+}
+
+/* The card is capped at 440px so forms stay readable on desktop. */
+.auth-card {
+  width: 100%;
+  max-width: 440px;
+}
+
+/* Page heading and supporting line. */
+.auth-title {
+  font-size: var(--text-2xl);
+  color: var(--text);
+  margin: 0 0 var(--space-2);
+}
+
+.auth-sub {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* The form: stacked fields with even spacing. */
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  margin-top: var(--space-5);
+}
+
+/* Full-width submit button. */
+.auth-submit {
+  width: 100%;
+  margin-top: var(--space-1);
+}
+
+/* Row of helper links under the form (e.g. signup / forgot password). */
+.auth-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-5);
+  justify-content: space-between;
+  margin-top: var(--space-5);
+  font-size: var(--text-sm);
+}
+
+.auth-links a {
+  color: var(--gold);
+  text-decoration: none;
+}
+
+.auth-links a:hover {
+  color: var(--gold-hover);
+  text-decoration: underline;
+}
+
+/* Single centered link variant (used after success states). */
+.auth-links--center {
+  justify-content: center;
+}
+
+/* Spacing between the card's own blocks (alerts, headings, form). */
+.auth-card > * + * {
+  margin-top: var(--space-4);
+}
+
+.auth-card > .auth-form,
+.auth-card > .auth-links {
+  margin-top: var(--space-5);
+}
+
+/* Small screens: tighten the page padding so nothing overflows at 360px. */
+@media (max-width: 640px) {
+  .auth-page {
+    padding: var(--space-4) var(--space-3);
+    align-items: flex-start;
+  }
+}
