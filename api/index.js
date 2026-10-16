@@ -14,9 +14,9 @@
  * store is active the evidence controller keeps file bytes in the document
  * (see server/src/controllers/evidence.js `useBinaryStore`).
  */
-import { getConfig } from './server/src/config/env.js';
-import { createRepository } from './server/src/db/repository.js';
-import { buildApp } from './server/src/app.js';
+import { getConfig } from '../server/src/config/env.js';
+import { createRepository } from '../server/src/db/repository.js';
+import { buildApp } from '../server/src/app.js';
 
 const GLOBAL_KEY = '__humancourt_serverless__';
 
