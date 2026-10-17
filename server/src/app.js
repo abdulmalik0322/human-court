@@ -43,7 +43,25 @@ export function buildApp({ repo, storeName = 'json', config = getConfig() } = {}
   // proxy — dev/test keep the default.
   if (config.isProd) app.set('trust proxy', 1);
   app.use(helmet());
-  app.use(cors({ origin: config.clientUrl, credentials: true }));
+  // CORS: the browser's Origin header never includes a path, so compare
+  // origins (scheme + host + port) instead of full URLs. CLIENT_URL may
+  // carry a subpath like /human-court — strip it for the comparison.
+  // Requests with no Origin (curl, native mobile apps) are allowed through.
+  app.use(
+    cors({
+      origin(origin, callback) {
+        if (!origin) return callback(null, true);
+        try {
+          const allowed = new URL(config.clientUrl).origin;
+          if (new URL(origin).origin === allowed) return callback(null, true);
+        } catch {
+          // malformed URL — fall through to rejection below
+        }
+        return callback(new Error('CORS: origin not allowed'));
+      },
+      credentials: true,
+    })
+  );
   app.use(express.json({ limit: '1mb' }));
   app.use(cookieParser());
   app.use(requestLog);

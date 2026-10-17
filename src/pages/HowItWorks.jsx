@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useReveal } from '../hooks/useReveal.js';
+import { img } from '../utils/img.js';
 import {
   FilePlus2,
   MessagesSquare,
@@ -100,7 +101,7 @@ export default function HowItWorks() {
           </div>
           <figure className="page-hero-visual">
             <img
-              src="/images/how-hero.jpg"
+              src={img('images/how-hero.jpg')}
               alt="A person thoughtfully working through a case with documents at a desk in warm light"
               className="page-hero-img"
             />

@@ -4,6 +4,7 @@ import Card from '../components/ui/Card.jsx';
 import Alert from '../components/ui/Alert.jsx';
 import { sampleCase } from '../data/sampleCase.js';
 import { useReveal } from '../hooks/useReveal.js';
+import { img } from '../utils/img.js';
 import './Landing.css';
 
 // The 8 steps shown both here (compact) and on /how-it-works (detailed).
@@ -48,19 +49,19 @@ const FAQ = [
 // The three principles, each with a cinematic image.
 const PRINCIPLES = [
   {
-    img: '/images/hear-both-sides.jpg',
+    img: img('images/hear-both-sides.jpg'),
     alt: 'Two people facing each other in balanced dialogue, golden light between them',
     title: 'Hear both sides',
     text: 'Every case starts with both perspectives written down — yours and theirs — so neither side gets lost in the heat of the moment.',
   },
   {
-    img: '/images/question-assumptions.jpg',
+    img: img('images/question-assumptions.jpg'),
     alt: 'A magnifying glass examining documents on a dark desk',
     title: 'Question assumptions',
     text: 'Human Court pushes you to separate what you know from what you\u2019re assuming, and to ask what information is missing.',
   },
   {
-    img: '/images/find-perspective.jpg',
+    img: img('images/find-perspective.jpg'),
     alt: 'Golden scales of justice perfectly balanced in dramatic light',
     title: 'Find perspective',
     text: 'When you can see the full picture laid out fairly, better decisions — and calmer conversations — follow naturally.',
@@ -248,7 +249,7 @@ export default function Landing() {
           </div>
           <figure className="landing-hero-visual reveal" style={{ '--reveal-delay': '160ms' }}>
             <img
-              src="/images/hero-discussion.jpg"
+              src={img('images/hero-discussion.jpg')}
               alt="Two people in calm, respectful discussion across a table in warm golden light"
               className="landing-hero-img"
             />

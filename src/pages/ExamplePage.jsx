@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { sampleCase } from '../data/sampleCase.js';
 import Card from '../components/ui/Card.jsx';
 import Alert from '../components/ui/Alert.jsx';
+import { img } from '../utils/img.js';
 import './ExamplePage.css';
 
 // Render a string as a paragraph, an array as a list, anything else as-is.
@@ -61,7 +62,7 @@ export default function ExamplePage() {
           </div>
           <figure className="page-hero-visual example-header-img">
             <img
-              src="/images/example-hero.jpg"
+              src={img('images/example-hero.jpg')}
               alt="An open case file with documents and notes arranged on a dark desk"
               className="page-hero-img"
             />

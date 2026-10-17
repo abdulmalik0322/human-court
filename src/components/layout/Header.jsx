@@ -116,22 +116,22 @@ export default function Header() {
           {user ? (
             <>
               <NotificationsBell onNavigate={closeMenu} />
-              <Link to="/dashboard" className="link-like">
+              <Link to="/dashboard" className="link-like auth-desktop">
                 Dashboard
               </Link>
-              <Link to="/settings" className="link-like">
+              <Link to="/settings" className="link-like auth-desktop">
                 Settings
               </Link>
-              <Button variant="ghost" size="sm" onClick={handleLogout}>
+              <Button variant="ghost" size="sm" className="auth-desktop" onClick={handleLogout}>
                 Log out
               </Button>
             </>
           ) : (
             <>
-              <Link to="/login" className="link-like">
+              <Link to="/login" className="link-like auth-desktop">
                 Log in
               </Link>
-              <Button size="sm" onClick={() => navigate('/cases/new')}>
+              <Button size="sm" className="auth-desktop" onClick={() => navigate('/cases/new')}>
                 Bring Your Case
               </Button>
             </>
@@ -164,6 +164,28 @@ export default function Header() {
           <NavLink to="/notifications" className={navLinkClass} end onClick={closeMenu}>
             Notifications
           </NavLink>
+        )}
+        {user ? (
+          <>
+            <NavLink to="/dashboard" className={navLinkClass} end onClick={closeMenu}>
+              Dashboard
+            </NavLink>
+            <NavLink to="/settings" className={navLinkClass} end onClick={closeMenu}>
+              Settings
+            </NavLink>
+            <button type="button" className="nav-link nav-action-btn" onClick={handleLogout}>
+              Log out
+            </button>
+          </>
+        ) : (
+          <>
+            <NavLink to="/login" className={navLinkClass} end onClick={closeMenu}>
+              Log in
+            </NavLink>
+            <NavLink to="/cases/new" className={navLinkClass} end onClick={closeMenu}>
+              Bring Your Case
+            </NavLink>
+          </>
         )}
       </nav>
     </header>

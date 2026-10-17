@@ -220,10 +220,35 @@
   border-left-color: var(--gold);
 }
 
+/* Mobile: hide desktop auth actions (they live inside the hamburger menu) */
+.header-actions .auth-desktop {
+  display: none;
+}
+
+/* Logout button styled as a mobile nav link */
+.nav-action-btn {
+  background: none;
+  border: none;
+  border-left: 2px solid transparent;
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+  font: inherit;
+  color: inherit;
+}
+
 /* Desktop breakpoint */
 @media (min-width: 768px) {
   .main-nav {
     display: block;
+  }
+
+  .header-actions .auth-desktop {
+    display: inline-flex;
+  }
+
+  a.link-like.auth-desktop {
+    display: inline;
   }
 
   .menu-toggle,

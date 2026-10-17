@@ -165,8 +165,14 @@ function Layout() {
 }
 
 export default function App() {
+  // GitHub Pages serves the app under /human-court/ while `npm run dev`
+  // serves from /. import.meta.env.BASE_URL is '/human-court/' in GHPAGES
+  // builds and '/' locally, so the router basename follows the build
+  // automatically. Without this, every route on the live site renders
+  // the NotFound page.
+  const routerBasename = import.meta.env.BASE_URL.replace(/\/$/, '') || '/';
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={routerBasename}>
       <ToastProvider>
         <AuthProvider>
           <ScrollToTop />

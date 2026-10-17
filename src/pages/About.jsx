@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import Card from '../components/ui/Card.jsx';
 import Alert from '../components/ui/Alert.jsx';
 import { useReveal } from '../hooks/useReveal.js';
+import { img } from '../utils/img.js';
 import './About.css';
 
 // Note: this page deliberately names no founders, history, awards,
@@ -35,7 +36,7 @@ export default function About() {
           </div>
           <figure className="page-hero-visual">
             <img
-              src="/images/about-hero.jpg"
+              src={img('images/about-hero.jpg')}
               alt="Two people shaking hands in agreement in warm golden light"
               className="page-hero-img"
             />
@@ -71,7 +72,7 @@ export default function About() {
           <div className="about-commitment">
             <figure className="page-hero-visual about-commitment-img">
               <img
-                src="/images/about-values.jpg"
+                src={img('images/about-values.jpg')}
                 alt="Golden scales perfectly balanced in warm light"
                 className="page-hero-img"
               />
