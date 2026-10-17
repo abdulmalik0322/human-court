@@ -140,11 +140,23 @@ export default function ChatWidget() {
     }
   }, [user]);
 
-  if (!user) return null;
-
   return (
     <div className="chat-widget">
-      {open && (
+      {open && !user && (
+        <section className="chat-panel" aria-label="AI assistant chat" role="dialog">
+          <header className="chat-header">
+            <div>
+              <h2 className="chat-title">Human Court Assistant</h2>
+              <p className="chat-subtitle">Please log in to chat</p>
+            </div>
+            <button type="button" className="chat-close" onClick={() => setOpen(false)} aria-label="Close chat">×</button>
+          </header>
+          <div className="chat-body">
+            <p className="chat-empty">Please <a href="/human-court/login">log in</a> to use the AI assistant.</p>
+          </div>
+        </section>
+      )}
+      {open && user && (
         <section className="chat-panel" aria-label="AI assistant chat" role="dialog">
           <header className="chat-header">
             <div>

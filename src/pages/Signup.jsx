@@ -68,11 +68,6 @@ export default function Signup() {
         <h1 className="auth-title">Create your account</h1>
         <p className="auth-sub">Start filing cases with Human Court.</p>
 
-        <Alert variant="info" title="Email verification not yet available">
-          We don't send verification emails yet — your account works without
-          one for now.
-        </Alert>
-
         {serverError && (
           <Alert variant="error" role="alert">
             {serverError}
